@@ -3,9 +3,7 @@ const Poi = db.poi;
 
 exports.create = (req, res) => {
   // Validate request
-  if ( !req.body.name || !req.body.address || !req.body.address.full_address ||
-      !req.body.address.longitude || !req.body.address.latitude ||
-      !req.body.type ) {
+  if ( !req.body.name ) {
     res.status(400).send({ message: "Certains éléments sont manquants." });
     return;
   }
