@@ -10,9 +10,9 @@ module.exports = mongoose => {
           latitude: String,
         },
         type: String,
-        status: Boolean,
+        published: Boolean,
         state: String,
-        poster: Number
+        poster: String
       },
       { timestamps: true }
     )
