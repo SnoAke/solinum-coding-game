@@ -1,5 +1,5 @@
 module.exports = app => {
-  const poi = require("../controllers/POI.controller.js");
+  const poi = require("../controllers/poi.controller.js");
 
   var router = require("express").Router();
 
