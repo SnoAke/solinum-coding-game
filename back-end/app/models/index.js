@@ -1,4 +1,4 @@
-const dbConfig = require("../config/db.config.js");
+const dbConfig = require("../config/" + process.env.NODE_ENV + "/db.config.js");
 
 const mongoose = require("mongoose");
 mongoose.Promise = global.Promise;

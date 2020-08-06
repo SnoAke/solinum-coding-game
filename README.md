@@ -12,7 +12,7 @@ Fonctionnalités de l'API :
 |PATCH|api/poi/:id|modify POI's status or state|
 |GET|api/poi/map|display map|
 
-Lancer le serveur : `node back-end/server.js`
+Lancer le serveur : `NODE_ENV=development node back-end/server.js`
 
 
 ## Front-end Angular
