@@ -3,7 +3,7 @@ const nodemailer = require("nodemailer");
 const confGlobal = require("../config/" + process.env.NODE_ENV + "/global.config");
 const mailConfig = require("../config/" + process.env.NODE_ENV + "/mailing.config");
 
-exports.sendEmail = (poiId, opEmail = null ) => {
+exports.sendEmail = (poiId, opEmail = null , poiState = null) => {
 
   let transporter = nodemailer.createTransport(mailConfig.transport);
 
@@ -15,7 +15,7 @@ exports.sendEmail = (poiId, opEmail = null ) => {
       from: mailConfig.standard_email,
       to: opEmail,
       subject: "Le statut de votre POI a changé.",
-      text: `Un administrateur a changé le statut de votre POI à changé. Vous pouvez y accéder à l'adresse : ${confGlobal.url}/${poiId}`
+      text: `Un administrateur a changé le statut de votre POI à changé pour "${poiState}". Vous pouvez y accéder à l'adresse : ${confGlobal.url}/${poiId}`
     };
 
   } else {

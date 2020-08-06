@@ -20,7 +20,7 @@ exports.create = (req, res) => {
     },
     type: req.body.type,
     published: false,
-    state: "pending",
+    state: "En attente de validation...",
     poster_email: req.body.poster_email
   });
 
@@ -84,8 +84,7 @@ exports.findOne = (req, res) => {
     .catch(err => {
       res
         .status(500)
-        .send({ message: "Une erreur est survenu lors de la recherche du POI" +
-                        " avec l'id : " + id });
+        .send({ message: "Une erreur est survenu lors de la recherche du POI avec l'id : " + id });
     });
 };
 
@@ -100,7 +99,7 @@ exports.update = (req, res) => {
 
   let poiToUpdate = req.body;
   poiToUpdate.published = false;
-  poiToUpdate.state = "pending";
+  poiToUpdate.state = "En attente de validation...";
 
   const id = req.params.id;
 
@@ -108,15 +107,13 @@ exports.update = (req, res) => {
     .then(data => {
       if (!data) {
         res.status(404).send({
-          message: `Impossible de mettre à jour le POI avec l'id=${id}. Ce POI
-           est peut-être introuvable.`
+          message: `Impossible de mettre à jour le POI avec l'id=${id}. Ce POI est peut-être introuvable.`
         });
-      } else res.send({ message: "Le POI a été mis à jour avec succès. Data = "+ poiToUpdate.address.full_address });
+      } else res.send({ message: "Le POI a été mis à jour avec succès. Data = " + poiToUpdate.address.full_address });
     })
     .catch(err => {
       res.status(500).send({
-        message: "Une erreur est survenu en mettant à jour le POI avec " +
-        "l'id : " + id
+        message: "Une erreur est survenu en mettant à jour le POI avec l'id : " + id
       });
     });
 };
@@ -125,26 +122,29 @@ exports.update = (req, res) => {
 
 exports.switchStatusState = (req, res) => {
   // Validate request
-  if ( !req.body.published &&  !req.body.state ) {
+  if ( !req.body.state ) {
     res.status(400).send({ message: "Certains éléments sont manquants." });
     return;
   }
 
   const id = req.params.id;
 
+ req.body.published = ( req.body.state === "Validé" );
+
   Poi.findByIdAndUpdate(id, req.body)
     .then(data => {
       if (!data) {
         res.status(404).send({
-          message: `Impossible de mettre à jour le POI avec l'id=${id}. Ce POI
-           est peut-être introuvable.`
+          message: `Impossible de mettre à jour le POI avec l'id=${id}. Ce POI est peut-être introuvable.`
         });
-      } else res.send({ message: "Le POI a été mis à jour avec succès." });
+      } else {
+        mailing_controller.sendEmail(data._id, data.poster_email, data.state);
+        res.send({ message: "Le POI a été mis à jour avec succès." });
+      }
     })
     .catch(err => {
       res.status(500).send({
-        message: "Une erreur est survenu en mettant à jour le POI avec " +
-        "l'id : " + id
+        message: "Une erreur est survenu en mettant à jour le POI avec l'id : " + id
       });
     });
 };
