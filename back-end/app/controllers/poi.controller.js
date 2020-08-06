@@ -3,7 +3,7 @@ const Poi = db.poi;
 
 exports.create = (req, res) => {
   // Validate request
-  if ( !req.body.name ) {
+  if ( !req.body.name || !req.body.op_id ) {
     res.status(400).send({ message: "Certains éléments sont manquants." });
     return;
   }
@@ -13,13 +13,13 @@ exports.create = (req, res) => {
     name: req.body.name,
     address: {
       full_address: req.body.address.full_address,
-      longitude: req.body.adress.longitude,
-      latitude: req.body.adress.latitude
+      longitude: req.body.address.longitude,
+      latitude: req.body.address.latitude
     },
     type: req.body.type,
     published: false,
     state: "pending",
-    poster: req.body.op,
+    poster: req.body.op_id
   });
 
   // Save POI in the database
@@ -89,9 +89,7 @@ exports.findOne = (req, res) => {
 
 exports.update = (req, res) => {
   // Validate request
-  if ( !req.body.name || !req.body.address || !req.body.address.full_address ||
-      !req.body.address.longitude || !req.body.address.latitude ||
-      !req.body.type ) {
+  if ( !req.body ) {
     res.status(400).send({ message: "Certains éléments sont manquants." });
     return;
   }
@@ -109,7 +107,7 @@ exports.update = (req, res) => {
           message: `Impossible de mettre à jour le POI avec l'id=${id}. Ce POI
            est peut-être introuvable.`
         });
-      } else res.send({ message: "Le POI a été mis à jour avec succès." });
+      } else res.send({ message: "Le POI a été mis à jour avec succès. Data = "+ poiToUpdate.address.full_address });
     })
     .catch(err => {
       res.status(500).send({
@@ -123,7 +121,7 @@ exports.update = (req, res) => {
 
 exports.switchStatusState = (req, res) => {
   // Validate request
-  if ( !req.body.published || !req.body.state ) {
+  if ( !req.body.published &&  !req.body.state ) {
     res.status(400).send({ message: "Certains éléments sont manquants." });
     return;
   }

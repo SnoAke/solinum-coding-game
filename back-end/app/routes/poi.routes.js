@@ -10,7 +10,7 @@ module.exports = app => {
   router.get("/", poi.findAllPublished);
 
   // Retrieve all published POIs
-  router.get("/published", poi.findAllDraft);
+  router.get("/draft", poi.findAllDraft);
 
   // Retrieve a single POI with id
   router.get("/:id", poi.findOne);

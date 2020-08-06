@@ -4,8 +4,8 @@ module.exports = mongoose => {
     mongoose.Schema(
       {
         name: String,
-        adress: {
-          full_adress: String,
+        address: {
+          full_address: String,
           longitude: String,
           latitude: String,
         },
