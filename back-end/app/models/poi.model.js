@@ -12,7 +12,7 @@ module.exports = mongoose => {
         type: String,
         published: Boolean,
         state: String,
-        poster: String
+        poster_email: String
       },
       { timestamps: true }
     )

@@ -1,9 +1,11 @@
-const db = require("../models");
+const db = require("../models/");
+const mailing_controller = require("./mailing.controller");
+
 const Poi = db.poi;
 
 exports.create = (req, res) => {
   // Validate request
-  if ( !req.body.name || !req.body.op_id ) {
+  if ( !req.body.name || !req.body.poster_email ) {
     res.status(400).send({ message: "Certains éléments sont manquants." });
     return;
   }
@@ -19,14 +21,16 @@ exports.create = (req, res) => {
     type: req.body.type,
     published: false,
     state: "pending",
-    poster: req.body.op_id
+    poster_email: req.body.poster_email
   });
 
   // Save POI in the database
   poi
     .save(poi)
     .then(data => {
+      mailing_controller.sendEmail(data._id);
       res.send(data);
+
     })
     .catch(err => {
       res.status(500).send({
