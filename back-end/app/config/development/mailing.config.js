@@ -2,14 +2,14 @@
 
 module.exports = {
   transport: {
-    host: "smtp.free.fr",
-    port: 465,
-    secure: true,
+    host: "smtp.example.com",
+    port: 587,
+    secure: false, // upgrade later with STARTTLS
     auth: {
-      user: "pierre.blanchais",
-      pass: "r5G@3Jx#S7E#Y4"
+      user: "username",
+      pass: "password"
     }
   },
-  admin_email: "pierre.blanchais@free.fr",
-  standard_email: "pierre.blanchais@free.fr",
+  admin_email: "test@exemple.com",
+  standard_email: "test@example.com",
 };
