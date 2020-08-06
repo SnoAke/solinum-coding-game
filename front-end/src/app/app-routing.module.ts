@@ -1,7 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-const routes: Routes = [];
+import { PoiListComponent } from './components/poi-list/poi-list.component';
+import { PoiDetailsComponent } from './components/poi-details/poi-details.component';
+import { AddPoiComponent } from './components/add-poi/add-poi.component';
+
+
+const routes: Routes = [
+  { path: '', component: PoiListComponent },
+  { path: 'draft', component: PoiListComponent },
+  { path: 'poi/:id', component: PoiDetailsComponent },
+  { path: 'add', component: AddPoiComponent }
+];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
