@@ -34,6 +34,40 @@
           class="form-control"
           id="address"
           name="address"
+          style="display: none;"
+        />
+      </div>
+
+
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control"
+          id="full_address"
+          [(ngModel)]="poi.full_address"
+          name="full_address"
+        />
+      </div>
+
+
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control"
+          id="longitude"
+          [(ngModel)]="poi.longitude"
+          name="longitude"
+        />
+      </div>
+
+
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control"
+          id="latitude"
+          [(ngModel)]="poi.latitude"
+          name="latitude"
         />
       </div>
 

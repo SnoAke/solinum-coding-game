@@ -10,6 +10,6 @@ module.exports = {
       pass: "password"
     }
   },
-  admin_email: "test@exemple.com",
+  admin_email: "test@example.com",
   standard_email: "test@example.com",
 };
