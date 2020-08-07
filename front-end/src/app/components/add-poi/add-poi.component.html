@@ -28,13 +28,13 @@
 
 
       <div class="form-group">
-        <label for="address">Address</label>
+        <label for="address">Adresse</label>
         <input
           type="text"
           class="form-control"
           id="address"
           name="address"
-          style="display: none;"
+          #addressSearch
         />
       </div>
 
@@ -46,6 +46,7 @@
           id="full_address"
           [(ngModel)]="poi.full_address"
           name="full_address"
+          style="display: none;"
         />
       </div>
 
@@ -57,6 +58,7 @@
           id="longitude"
           [(ngModel)]="poi.longitude"
           name="longitude"
+          style="display: none;"
         />
       </div>
 
@@ -68,6 +70,7 @@
           id="latitude"
           [(ngModel)]="poi.latitude"
           name="latitude"
+          style="display: none;"
         />
       </div>
 
