@@ -20,7 +20,6 @@ exports.create = (req, res) => {
     },
     type: req.body.type,
     published: false,
-    state: "En attente de validation...",
     poster_email: req.body.poster_email
   });
 
@@ -99,7 +98,7 @@ exports.update = (req, res) => {
 
   let poiToUpdate = req.body;
   poiToUpdate.published = false;
-  poiToUpdate.state = "En attente de validation...";
+  poiToUpdate.state = "";
 
   const id = req.params.id;
 
@@ -129,7 +128,7 @@ exports.switchStatusState = (req, res) => {
 
   const id = req.params.id;
 
- req.body.published = ( req.body.state === "Validé" );
+ req.body.published = ( req.body.state === "validated" );
 
   Poi.findByIdAndUpdate(id, req.body)
     .then(data => {
