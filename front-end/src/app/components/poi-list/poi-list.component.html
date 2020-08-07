@@ -1,1 +1,38 @@
-<p>poi-list works!</p>
+<div class="list">
+  <div *ngIf="this.statePoi === '/poi'; then published else draft"></div>
+  <ng-template #published>
+    <h2 style='display: inline-block;' class='col-md-6'>Points d'intérêts :</h2>
+
+    <a href="/draft">
+      <button class="m-3 btn btn-sm">
+        Brouillons
+      </button>
+    </a>
+  </ng-template>
+
+  <ng-template #draft>
+    <h2 style='display: inline-block;' class='col-md-6'>Points d'intérêts brouillons :</h2>
+
+    <a href="/poi">
+      <button class="m-3 btn btn-sm">
+        POI publiés
+      </button>
+    </a>
+  </ng-template>
+
+  <div *ngFor="let poi of pois;">
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">
+          <a [title]="poi.name" [routerLink]="['/poi', poi._id]">
+            {{poi.name}}
+          </a>
+        </h5>
+        <h6 class="card-subtitle mb-2 text-muted">Type : {{poi.type}}</h6>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="card-link">Card link</a>
+        <a href="#" class="card-link">Another link</a>
+      </div>
+    </div>
+  </div>
+</div>

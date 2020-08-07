@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PoiService } from '../../services/poi.service';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-poi-list',
@@ -7,9 +9,42 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PoiListComponent implements OnInit {
 
-  constructor() { }
+  statePoi;
+  pois: any;
+
+  constructor(
+    private poiService: PoiService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
+    this.statePoi = this.router.url;
+    this.retrievePois();
+  }
+
+  retrievePois(): void {
+    console.log(this.statePoi);
+    if ( this.statePoi === '/poi' ){
+      this.poiService.getPublished()
+        .subscribe(
+          data => {
+            this.pois = data;
+            console.log(data);
+          },
+          error => {
+            console.log(error);
+          });
+    } else if ( this.statePoi === '/draft' ){
+      this.poiService.getDraft()
+        .subscribe(
+          data => {
+            this.pois = data;
+            console.log(data);
+          },
+          error => {
+            console.log(error);
+          });
+    }
   }
 
 }
