@@ -24,7 +24,7 @@ import { PoiListComponent } from './components/poi-list/poi-list.component';
     FormsModule,
     HttpClientModule,
     AgmCoreModule.forRoot({
-          apiKey: 'AIzaSyAScI9oLDDE128z6ONVD8LcF-DqP9zDbIQ',
+          apiKey: 'my_api_key',
           libraries: ["places"]
         })
   ],
