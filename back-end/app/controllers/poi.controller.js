@@ -108,7 +108,7 @@ exports.update = (req, res) => {
         res.status(404).send({
           message: `Impossible de mettre à jour le POI avec l'id=${id}. Ce POI est peut-être introuvable.`
         });
-      } else res.send({ message: "Le POI a été mis à jour avec succès. Data = " + poiToUpdate.address.full_address });
+      } else res.send({ message: "Le POI a été mis à jour avec succès. Data = " + poiToUpdate });
     })
     .catch(err => {
       res.status(500).send({
