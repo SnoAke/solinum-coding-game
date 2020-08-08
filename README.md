@@ -9,8 +9,7 @@ Fonctionnalités de l'API :
 |GET|api/poi/:id|get a specific POI|
 |POST|api/poi/add|add new POI|
 |PUT|api/poi/:id|modify POI's fields|
-|PATCH|api/poi/:id|modify POI's status or state|
-|GET|api/poi/map|display map|
+|PATCH|api/poi/:id|modify POI's status and state|
 
 Lancer le serveur : `NODE_ENV=development node back-end/server.js`
 
