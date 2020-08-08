@@ -74,6 +74,8 @@ export class AddPoiComponent implements OnInit {
         error => {
           console.log(error);
         });
+
+    this.newPoi();
   }
 
   newPoi(): void {
