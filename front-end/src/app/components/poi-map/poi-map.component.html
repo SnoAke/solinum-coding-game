@@ -1,0 +1,15 @@
+<div *ngIf="!pois.length; then poiEmpty else poiMap"></div>
+
+
+<ng-template #poiEmpty>
+  <p>
+    Il n'y a pas de point d'intérêt publié...
+  </p>
+  <a routerLink="add" class="btn btn-primary">Ajouter un point d'intérêt</a>
+</ng-template>
+
+<ng-template #poiMap>
+  <agm-map [latitude]="geoloc.lat" [longitude]="geoloc.lng">
+    <agm-marker [latitude]="geoloc.lat" [longitude]="geoloc.lng"></agm-marker>
+  </agm-map>
+</ng-template>

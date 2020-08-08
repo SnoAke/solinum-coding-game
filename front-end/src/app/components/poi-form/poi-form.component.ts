@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild, ElementRef, NgZone, Input } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import { MapsAPILoader } from '@agm/core';
 import { PoiService } from '../../services/poi.service';
 

@@ -11,6 +11,7 @@ import { AddPoiComponent } from './components/add-poi/add-poi.component';
 import { PoiDetailsComponent } from './components/poi-details/poi-details.component';
 import { PoiListComponent } from './components/poi-list/poi-list.component';
 import { PoiFormComponent } from './components/poi-form/poi-form.component';
+import { PoiMapComponent } from './components/poi-map/poi-map.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { PoiFormComponent } from './components/poi-form/poi-form.component';
     AddPoiComponent,
     PoiDetailsComponent,
     PoiListComponent,
-    PoiFormComponent
+    PoiFormComponent,
+    PoiMapComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +29,7 @@ import { PoiFormComponent } from './components/poi-form/poi-form.component';
     ReactiveFormsModule,
     HttpClientModule,
     AgmCoreModule.forRoot({
-          apiKey: 'places_api_key',
+          apiKey: 'gmap_api_key',
           libraries: ["places"]
         })
   ],
