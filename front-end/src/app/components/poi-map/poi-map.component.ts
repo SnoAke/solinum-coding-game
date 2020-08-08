@@ -10,8 +10,8 @@ export class PoiMapComponent implements OnInit {
 
   pois=[];
   geoloc = {
-    lat: 0,
-    lng: 0
+    lat: 48.8534100,
+    lng: 2.3488000
   };
 
   constructor(
