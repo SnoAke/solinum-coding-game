@@ -56,6 +56,7 @@ export class AddPoiComponent implements OnInit {
     this.submitted = false;
     this.poiForm.setValue({
       name: "",
+      address:"",
       full_address: "",
       longitude: 0,
       latitude: 0,

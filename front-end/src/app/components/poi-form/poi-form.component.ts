@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, NgZone, Input } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { MapsAPILoader } from '@agm/core';
+import { PoiService } from '../../services/poi.service';
 
 @Component({
   selector: 'app-poi-form',
@@ -17,7 +18,8 @@ export class PoiFormComponent implements OnInit {
 
   constructor(
     private mapsAPILoader: MapsAPILoader,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    private poiService: PoiService
   ) { }
 
   ngOnInit(): void {
