@@ -10,6 +10,7 @@
 
 <ng-template #poiMap>
   <agm-map [latitude]="geoloc.lat" [longitude]="geoloc.lng">
-    <agm-marker [latitude]="geoloc.lat" [longitude]="geoloc.lng"></agm-marker>
+    <agm-marker  *ngFor="let poi of pois;" [latitude]="poi.address.latitude" [longitude]="poi.address.longitude">
+    </agm-marker>
   </agm-map>
 </ng-template>
