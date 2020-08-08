@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PoiService } from '../../services/poi.service';
 
 @Component({
@@ -10,8 +10,8 @@ import { PoiService } from '../../services/poi.service';
 export class AddPoiComponent implements OnInit {
 
   poiForm = new FormGroup({
-    poster_email: new FormControl(''),
-    name: new FormControl(''),
+    poster_email: new FormControl('', [Validators.required, Validators.email]),
+    name: new FormControl('', [Validators.required]),
     address: new FormControl(''),
     full_address: new FormControl(''),
     longitude: new FormControl(''),
@@ -64,5 +64,12 @@ export class AddPoiComponent implements OnInit {
       poster_email: ""
     });
   }
+
+
+  onSubmit() {
+    if ( this.poiForm.invalid ) return; else this.savePoi();
+  }
+
+
 
 }

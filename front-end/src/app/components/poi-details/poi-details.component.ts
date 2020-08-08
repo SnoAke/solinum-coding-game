@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from "@angular/router";
 import { PoiService } from '../../services/poi.service';
 
@@ -12,8 +12,8 @@ export class PoiDetailsComponent implements OnInit {
 
   poiId = "";
   poiForm = new FormGroup({
-    poster_email: new FormControl(''),
-    name: new FormControl(''),
+    poster_email: new FormControl('', [Validators.required, Validators.email]),
+    name: new FormControl('', [Validators.required]),
     address: new FormControl(''),
     full_address: new FormControl(''),
     longitude: new FormControl(''),
@@ -103,6 +103,8 @@ export class PoiDetailsComponent implements OnInit {
 
   changeStatus ( status: string ){
 
+    if ( this.poiForm.invalid ) return; 
+
     const data = {
       state: status
     }
@@ -116,6 +118,12 @@ export class PoiDetailsComponent implements OnInit {
         error => {
           console.log(error);
         });
+  }
+
+
+
+  onSubmit() {
+    if ( this.poiForm.invalid ) return; else this.savePoi();
   }
 
 }

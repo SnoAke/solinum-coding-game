@@ -4,7 +4,7 @@
         <h4>Votre point d'intérêt a été enregistré !</h4>
     </div>
 
-    <form (ngSubmit)="savePoi()" >
+    <form (ngSubmit)="onSubmit()" >
       <app-poi-form [poiForm]="poiForm" ></app-poi-form>
       <input type="submit" value="Enregistrer" class="btn btn-success" />
     </form>

@@ -3,12 +3,15 @@
     <label for="poster_email">Email</label>
     <input
       type="email"
+      [class.is-invalid] = "poiForm.get('poster_email').invalid && poiForm.get('poster_email').touched"
       class="form-control"
       id="poster_email"
       required
       formControlName="poster_email"
       name="poster_email"
     />
+    <small *ngIf="poiForm.get('poster_email').errors?.required" class="text-danger">Vous devez entrer votre email</small>
+    <small *ngIf="poiForm.get('poster_email').errors?.email" class="text-danger">Veuillez entrer un email valide</small>
   </div>
 
 
@@ -16,12 +19,14 @@
     <label for="name">Nom du point d'intérêt</label>
     <input
       type="text"
+      [class.is-invalid] = "poiForm.get('name').invalid && poiForm.get('name').touched"
       class="form-control"
       id="name"
       required
       formControlName="name"
       name="name"
     />
+    <small *ngIf="poiForm.get('name').errors?.required" class="text-danger">Vous devez entrer un nom pour le point d'intérêt</small>
   </div>
 
 
