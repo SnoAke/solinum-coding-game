@@ -1,0 +1,90 @@
+<div class="form-group">
+  <label for="poster_email">Email</label>
+  <input
+    type="email"
+    class="form-control"
+    id="poster_email"
+    required
+    [(ngModel)]="poi.poster_email"
+    name="poster_email"
+  />
+</div>
+
+
+<div class="form-group">
+  <label for="name">Nom du point d'intérêt</label>
+  <input
+    type="text"
+    class="form-control"
+    id="name"
+    required
+    [(ngModel)]="poi.name"
+    name="name"
+  />
+</div>
+
+
+<div class="form-group">
+  <label for="address">Adresse</label>
+  <input
+    type="text"
+    class="form-control"
+    id="address"
+    name="address"
+    [(ngModel)]="poi.address"
+    #addressSearch
+  />
+</div>
+
+
+<div class="form-group">
+  <input
+    type="text"
+    class="form-control"
+    id="full_address"
+    [(ngModel)]="poi.full_address"
+    name="full_address"
+    style="display: none;"
+  />
+</div>
+
+
+<div class="form-group">
+  <input
+    type="text"
+    class="form-control"
+    id="longitude"
+    [(ngModel)]="poi.longitude"
+    name="longitude"
+    style="display: none;"
+  />
+</div>
+
+
+<div class="form-group">
+  <input
+    type="text"
+    class="form-control"
+    id="latitude"
+    [(ngModel)]="poi.latitude"
+    name="latitude"
+    style="display: none;"
+  />
+</div>
+
+
+<div class="form-group">
+  <label for="type">Type</label>
+  <select
+    name="type"
+    class="form-control"
+    id="type"
+    [(ngModel)]="poi.type"
+    name="type"
+  >
+    <option value="">--Choisissez un type de point d'intérêt--</option>
+    <option value="Distribution">Distribution</option>
+    <option value="Douche">Douche</option>
+    <option value="WiFi">WiFi</option>
+  </select>
+</div>
