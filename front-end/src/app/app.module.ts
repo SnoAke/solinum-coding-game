@@ -10,13 +10,15 @@ import { AppComponent } from './app.component';
 import { AddPoiComponent } from './components/add-poi/add-poi.component';
 import { PoiDetailsComponent } from './components/poi-details/poi-details.component';
 import { PoiListComponent } from './components/poi-list/poi-list.component';
+import { PoiFormComponent } from './components/poi-form/poi-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddPoiComponent,
     PoiDetailsComponent,
-    PoiListComponent
+    PoiListComponent,
+    PoiFormComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +26,7 @@ import { PoiListComponent } from './components/poi-list/poi-list.component';
     FormsModule,
     HttpClientModule,
     AgmCoreModule.forRoot({
-          apiKey: 'my_api_key',
+          apiKey: 'places_api_key',
           libraries: ["places"]
         })
   ],
