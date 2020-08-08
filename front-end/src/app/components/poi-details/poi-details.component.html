@@ -97,6 +97,23 @@
     </div>
 
 
-    <button (click)="savePoi()" class="btn btn-success">Mettre à jour</button>
+    <button (click)="savePoi()" class="btn btn-primary">Mettre à jour</button>
   </div>
+
+  <button
+    (click)="changeStatus('information_needed')"
+    class="btn btn-warning"
+    style="margin: 10px 5px 5px 0;"
+  >
+    Besoin  d'informations
+  </button>
+
+  <button
+    (click)="changeStatus('validated')"
+    class="btn btn-success"
+    style="margin: 10px 5px 5px 5px;"
+  >
+    Valider
+  </button>
+
 </div>

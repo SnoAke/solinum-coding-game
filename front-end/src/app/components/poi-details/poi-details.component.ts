@@ -125,4 +125,24 @@ export class PoiDetailsComponent implements OnInit {
     this.submitted = false;
   }
 
+
+
+
+  changeStatus ( status: string ){
+
+    const data = {
+      state: status
+    }
+
+    this.poiService.changeStatus( this.poiId, data)
+      .subscribe(
+        response => {
+          console.log(response);
+          this.submitted = true;
+        },
+        error => {
+          console.log(error);
+        });
+  }
+
 }
