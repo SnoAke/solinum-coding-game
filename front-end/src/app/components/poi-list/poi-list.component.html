@@ -24,42 +24,57 @@
     </div>
   </ng-template>
 
-  <div *ngFor="let poi of pois;" class="mb-3">
-    <div class="card" >
-      <div class="card-body">
-        <h5 class="card-title">
-          <a [title]="poi.name" [routerLink]="['/poi', poi._id]">
-            {{poi.name}}
-          </a>
-        </h5>
-        <h6 class="card-subtitle mb-2 text-muted">Type :
-          <span *ngIf="poi.type; else unknownType">{{poi.type}}</span>
-          <ng-template #unknownType>inconnu</ng-template>
-        </h6>
-        <p class="card-text">
-          <span *ngIf="poi.address && poi.address.full_address; else unknownAddress">{{poi.address.full_address}}</span>
-          <ng-template #unknownAddress>Adresse inconnue</ng-template>
-        </p>
 
-        <span
-          *ngIf="poi.state === 'pending'"
-          class="badge badge-warning mr-2"
-        >
-          En attente de validation...
-        </span>
-        <span
-          *ngIf="poi.state === 'validated'"
-          class="badge badge-success mr-2"
-        >
-          Validé
-        </span>
-        <span
-          *ngIf="poi.state === 'information_needed'"
-          class="badge badge-danger mr-2"
-        >
-          Besoin d'informations supplémentaires
-        </span>
+  <div *ngIf="pois.length; then poiList else poiEmpty"></div>
+  <ng-template #poiList>
+    <div *ngFor="let poi of pois;" class="mb-3">
+      <div class="card" >
+        <div class="card-body">
+          <h5 class="card-title">
+            <a [title]="poi.name" [routerLink]="['/poi', poi._id]">
+              {{poi.name}}
+            </a>
+          </h5>
+          <h6 class="card-subtitle mb-2 text-muted">Type :
+            <span *ngIf="poi.type; else unknownType">{{poi.type}}</span>
+            <ng-template #unknownType>inconnu</ng-template>
+          </h6>
+          <p class="card-text">
+            <span *ngIf="poi.address && poi.address.full_address; else unknownAddress">{{poi.address.full_address}}</span>
+            <ng-template #unknownAddress>Adresse inconnue</ng-template>
+          </p>
+
+          <span
+            *ngIf="poi.state === 'pending'"
+            class="badge badge-warning mr-2"
+          >
+            En attente de validation...
+          </span>
+          <span
+            *ngIf="poi.state === 'validated'"
+            class="badge badge-success mr-2"
+          >
+            Validé
+          </span>
+          <span
+            *ngIf="poi.state === 'information_needed'"
+            class="badge badge-danger mr-2"
+          >
+            Besoin d'informations supplémentaires
+          </span>
+        </div>
       </div>
     </div>
-  </div>
+  </ng-template>
+
+  <ng-template #poiEmpty>
+    <div *ngIf="this.statePoi === '/poi'; then published else draft" style=""></div>
+    <ng-template #published>
+      <p>Il n'y a pas de point d'intérêt publié...</p>
+    </ng-template>
+    <ng-template #draft>
+      <p>Il n'y a pas de brouillon de POI...</p>
+    </ng-template>
+  </ng-template>
+
 </div>

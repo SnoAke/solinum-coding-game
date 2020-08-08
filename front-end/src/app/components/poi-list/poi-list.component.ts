@@ -10,7 +10,7 @@ import { Router } from "@angular/router";
 export class PoiListComponent implements OnInit {
 
   statePoi;
-  pois: any;
+  pois=[];
 
   constructor(
     private poiService: PoiService,
