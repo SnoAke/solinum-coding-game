@@ -1,6 +1,5 @@
 import { TestBed } from '@angular/core/testing';
 import { PoiService } from './poi.service';
-import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 describe('PoiService', () => {
@@ -9,7 +8,6 @@ describe('PoiService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        FormsModule,
         HttpClientModule,
       ]
     });

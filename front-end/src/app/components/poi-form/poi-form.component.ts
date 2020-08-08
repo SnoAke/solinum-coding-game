@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild, ElementRef, NgZone } from '@angular/core';
-import { Input } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, NgZone, Input } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 import { MapsAPILoader } from '@agm/core';
 
 @Component({
@@ -9,7 +9,7 @@ import { MapsAPILoader } from '@agm/core';
 })
 export class PoiFormComponent implements OnInit {
 
-  @Input() poi;
+  @Input() poiForm;
   private geoCoder;
 
   @ViewChild('addressSearch') addressSearchRef: ElementRef;
@@ -38,10 +38,12 @@ export class PoiFormComponent implements OnInit {
           }
 
           //set latitude, longitude and zoom
-          this.poi.address = place.formatted_address;
-          this.poi.full_address = place.formatted_address;
-          this.poi.latitude = place.geometry.location.lat();
-          this.poi.longitude = place.geometry.location.lng();
+          this.poiForm.patchValue({
+            address: place.formatted_address,
+            full_address: place.formatted_address,
+            latitude: place.geometry.location.lat(),
+            longitude: place.geometry.location.lng()
+          });
         });
       });
     });

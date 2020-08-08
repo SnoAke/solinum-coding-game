@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from "@angular/router";
 import { PoiService } from '../../services/poi.service';
 
@@ -10,15 +11,15 @@ import { PoiService } from '../../services/poi.service';
 export class PoiDetailsComponent implements OnInit {
 
   poiId = "";
-  poi = {
-    name: "",
-    address: "",
-    full_address: "",
-    longitude: 0,
-    latitude: 0,
-    type: "",
-    poster_email: ""
-  };
+  poiForm = new FormGroup({
+    poster_email: new FormControl(''),
+    name: new FormControl(''),
+    address: new FormControl(''),
+    full_address: new FormControl(''),
+    longitude: new FormControl(''),
+    latitude: new FormControl(''),
+    type: new FormControl(''),
+  });
   submitted = false;
 
 
@@ -44,14 +45,14 @@ export class PoiDetailsComponent implements OnInit {
 
   savePoi(): void {
     const data = {
-      name: this.poi.name,
+      name: this.poiForm.get('name').value,
       address: {
-        full_address: this.poi.full_address,
-        longitude: this.poi.longitude,
-        latitude: this.poi.latitude,
+        full_address: this.poiForm.get('full_address').value,
+        longitude: this.poiForm.get('longitude').value,
+        latitude: this.poiForm.get('latitude').value,
       },
-      type: this.poi.type,
-      poster_email: this.poi.poster_email
+      type: this.poiForm.get('type').value,
+      poster_email: this.poiForm.get('poster_email').value
     };
 
     this.poiService.update( this.poiId, data)
@@ -73,15 +74,19 @@ export class PoiDetailsComponent implements OnInit {
     this.poiService.getOne(this.poiId)
       .subscribe(
         data => {
-          this.poi.name = data.name;
-          this.poi.type = data.type;
-          this.poi.poster_email = data.poster_email;
+          this.poiForm.patchValue({
+            name: data.name,
+            type: data.type,
+            poster_email: data.poster_email
+          });
 
           if ( data.address ){
-            this.poi.address = data.address.full_address;
-            this.poi.full_address = data.address.full_address;
-            this.poi.longitude = data.address.longitude;
-            this.poi.latitude = data.address. latitude;
+            this.poiForm.patchValue({
+              address: data.address.full_address,
+              full_address: data.address.full_address,
+              longitude: data.address.longitude,
+              latitude: data.address.latitude,
+            });
           }
 
           console.log(data);
