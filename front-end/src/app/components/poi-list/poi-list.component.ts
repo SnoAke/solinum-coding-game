@@ -23,7 +23,6 @@ export class PoiListComponent implements OnInit {
   }
 
   retrievePois(): void {
-    console.log(this.statePoi);
     if ( this.statePoi === '/poi' ){
       this.poiService.getPublished()
         .subscribe(
