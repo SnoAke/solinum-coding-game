@@ -28,6 +28,7 @@ exports.create = (req, res) => {
     .save(poi)
     .then(data => {
       mailing_controller.sendEmail(data._id);
+      mailing_controller.sendEmail(data._id, data.poster_email);
       res.send(data);
 
     })
@@ -89,6 +90,7 @@ exports.findOne = (req, res) => {
 
 
 
+// This function only updates the name/email/address/type fields of a poi.
 exports.update = (req, res) => {
   // Validate request
   if ( !req.body ) {
@@ -119,6 +121,7 @@ exports.update = (req, res) => {
 
 
 
+// This function patch the status and state of a poi
 exports.switchStatusState = (req, res) => {
   // Validate request
   if ( !req.body.state ) {

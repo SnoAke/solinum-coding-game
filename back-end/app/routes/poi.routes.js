@@ -6,10 +6,10 @@ module.exports = app => {
   // Create a new POI
   router.post("/", poi.create);
 
-  // Retrieve all POIs
+  // Retrieve all published POIs
   router.get("/", poi.findAllPublished);
 
-  // Retrieve all published POIs
+  // Retrieve all draft POIs
   router.get("/draft", poi.findAllDraft);
 
   // Retrieve a single POI with id
@@ -18,7 +18,7 @@ module.exports = app => {
   // Update a POI with id
   router.put("/:id", poi.update);
 
-  // Delete a POI with id
+  // Patch the state and status value of a POI
   router.patch("/:id", poi.switchStatusState);
 
 
