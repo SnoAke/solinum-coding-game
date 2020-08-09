@@ -9,8 +9,8 @@ import { PoiService } from '../../services/poi.service';
 })
 export class PoiFormComponent implements OnInit {
 
-  @Input() poiForm;
-  private geoCoder;
+  @Input() poiForm;   // Allows to change the value of the address with autocomplete
+  private geoCoder;   // A service for converting between an address and a LatLng.
 
   @ViewChild('addressSearch') addressSearchRef: ElementRef;
 
@@ -23,22 +23,22 @@ export class PoiFormComponent implements OnInit {
 
   ngOnInit(): void {
 
-    //load Places Autocomplete
+    // load Places Autocomplete
     this.mapsAPILoader.load().then(() => {
       this.geoCoder = new google.maps.Geocoder;
 
       let autocomplete = new google.maps.places.Autocomplete(this.addressSearchRef.nativeElement);
       autocomplete.addListener("place_changed", () => {
         this.ngZone.run(() => {
-          //get the place result
+          // get the place result
           let place: google.maps.places.PlaceResult = autocomplete.getPlace();
 
-          //verify result
+          // verify result
           if (place.geometry === undefined || place.geometry === null) {
             return;
           }
 
-          //set latitude, longitude and zoom
+          // set the address fields
           this.poiForm.patchValue({
             address: place.formatted_address,
             full_address: place.formatted_address,

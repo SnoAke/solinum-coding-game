@@ -12,15 +12,21 @@ export class PoiListComponent implements OnInit {
   statePoi;
   pois=[];
 
+
+
   constructor(
     private poiService: PoiService,
     private router: Router
   ) { }
 
+
+
   ngOnInit(): void {
     this.statePoi = this.router.url;
     this.retrievePois();
   }
+
+
 
   retrievePois(): void {
     if ( this.statePoi === '/poi' ){

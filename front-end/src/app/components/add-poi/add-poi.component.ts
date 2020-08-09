@@ -70,6 +70,4 @@ export class AddPoiComponent implements OnInit {
     if ( this.poiForm.invalid ) return; else this.savePoi();
   }
 
-
-
 }
