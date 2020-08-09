@@ -14,7 +14,6 @@ Fonctionnalités de l'API :
 Avant de lancer le serveur, il faut changer le fichier `back-end/app/config/development/mailing.config.js`
 
 Lancer le serveur : `NODE_ENV=development node back-end/server.js`
-J'ai créé une architecture qui peut facilement utiliser des variables pour en environnement de développement ou de production.
 
 
 ## Front-end Angular
@@ -31,4 +30,8 @@ Avant de lancer le serveur, il faut changer la valeur de apiKey par une clé api
 ```
 
 Lancer le serveur : `ng serve --port 8081`
-Pour que le back-end et le front-end puisse communiquer, j'ai utilisé une bibliothèque CORS et j'ai défini le port à utiliser par le front-end sur 8081.
+Puis accéder à l'application sur `http://localhost:8081`
+
+
+# Pour chacun
+Après avoir cloné le repo, il faut utiliser la commande `npm install` à la fois dans le dossier `back-end/` et dans le dossier `front-end/`
