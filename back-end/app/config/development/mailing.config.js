@@ -1,15 +1,13 @@
-// This was tested with my email address.
-
 module.exports = {
   transport: {
     host: "smtp.example.com",
     port: 587,
-    secure: false, // upgrade later with STARTTLS
+    secure: false,
     auth: {
       user: "username",
       pass: "password"
     }
   },
-  admin_email: "test@example.com",
-  standard_email: "test@example.com",
+  admin_email: "test@example.com",      // Email of the person that will receive the new poi created email
+  standard_email: "test@example.com",   // Email from which every email will be sent
 };
