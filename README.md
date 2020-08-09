@@ -20,7 +20,7 @@ J'ai créé une architecture qui peut facilement utiliser des variables pour en 
 ## Front-end Angular
 
 Avant de lancer le serveur, il faut changer la valeur de apiKey par une clé api lié aux api places et maps javascript de google
-'''
+```
 @NgModule({
   imports: [
     AgmCoreModule.forRoot({
@@ -28,7 +28,7 @@ Avant de lancer le serveur, il faut changer la valeur de apiKey par une clé api
         })
   ],
 })
-'''
+```
 
 Lancer le serveur : `ng serve --port 8081`
 Pour que le back-end et le front-end puisse communiquer, j'ai utilisé une bibliothèque CORS et j'ai défini le port à utiliser par le front-end sur 8081.
